@@ -24,7 +24,6 @@ public class SimpleCalculatorImplTest {
         assertEquals("0+", calculatorUnderTest.output());
     }
 
-
     @Test
     public void when_inputIsMinus_then_outputShouldBeCorrect() {
         SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
@@ -93,20 +92,10 @@ public class SimpleCalculatorImplTest {
         //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
     }
 
-    // TODO:
-    //  the existing tests are not enough since they only test simple use-cases with small inputs.
-    //  write at least 10 methods to test correct behavior with complicated inputs or use-cases.
-    //  examples:
-    //  - given input "5+7-13<DeleteLast>25", expected output is "5+17-125"
-    //  - given input "9<Clear>12<Clear>8-7=", expected output is "1"
-    //  - given input "8-7=+4=-1=", expected output is "4"
-    //  - given input "999-888-222=-333", expected output is "-111-333"
-    //  - with 2 calculators, give them different inputs, then save state on first calculator and load the state into second calculator, make sure state loaded well
-    //  etc etc.
-    //  feel free to be creative in your tests!
+    // 10 tests:
 
     @Test
-    public void one_operation_delete_last() {
+    public void delete_last_after_equals() {
         SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
         // 5 + 7 =
         calculatorUnderTest.insertDigit(5);
@@ -153,7 +142,7 @@ public class SimpleCalculatorImplTest {
     @Test
     public void multi_digit_operations() {
         SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
-        // 125 + 30 - 5
+        // 125 + 30 - 5 =
         calculatorUnderTest.insertDigit(1);
         calculatorUnderTest.insertDigit(2);
         calculatorUnderTest.insertDigit(5);
@@ -176,25 +165,29 @@ public class SimpleCalculatorImplTest {
         assertEquals("5+", calculatorUnderTest.output());
     }
 
-
     @Test
     public void double_op() {
         SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
-        // 5 + -
+        // 5 + = - =
         calculatorUnderTest.insertDigit(5);
         calculatorUnderTest.insertPlus();
+        calculatorUnderTest.insertEquals();
         calculatorUnderTest.insertMinus();
-        assertEquals("5+", calculatorUnderTest.output());
+        calculatorUnderTest.insertEquals();
+        assertEquals("5", calculatorUnderTest.output());
     }
 
     @Test
-    public void ignore_if_last_if_operation() {
+    public void ignore_if_last_is_operation() {
         SimpleCalculatorImpl calculatorUnderTest = new SimpleCalculatorImpl();
         // 5 + 3 -
         calculatorUnderTest.insertDigit(5);
         calculatorUnderTest.insertPlus();
         calculatorUnderTest.insertDigit(3);
         calculatorUnderTest.insertMinus();
+        calculatorUnderTest.insertEquals();
+        assertEquals("8", calculatorUnderTest.output());
+        calculatorUnderTest.insertPlus();
         calculatorUnderTest.insertEquals();
         assertEquals("8", calculatorUnderTest.output());
     }
@@ -231,7 +224,6 @@ public class SimpleCalculatorImplTest {
         calculatorUnderTest1.insertEquals();
         assertEquals("7", calculatorUnderTest1.output());
     }
-
 
 }
 

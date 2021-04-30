@@ -33,7 +33,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
         } else {
             input.set(input.size() - 1, input.getLast().concat(Integer.toString(digit)));
         }
-
         lastIsOperation = false;
     }
 
@@ -140,7 +139,7 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
         }
 
         public void setInput(LinkedList<String> input) {
-            savedInput = (LinkedList<String>) input.clone();
+            savedInput = new LinkedList<>(input);
         }
 
         public void setWasLastOperation(boolean wasLastOperation) {

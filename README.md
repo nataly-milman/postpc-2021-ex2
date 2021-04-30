@@ -1,18 +1,11 @@
-# AndroidCalculator - Calculator exercise for Android developers
+I pledge the highest level of ethical principles in support of academic excellence.
+I ensure that all of my work reflects my own abilities and not those of someone else."
 
-## In this project:
-- Calculator screen with XML ready for portrait and landscape
-- Calculator interface used by the Activity
-- Unit tests for the calculator and the activity
-
-## Your job:
-- Implement `SimpleCalculatorImpl.java`
-- add more unit tests to `SimpleCalculatorImpl.java`
-- Implement `MainActivity.java`
-- add more unit tests to `MainActivityTest.java`
-- add more flow tests to `AppFlowTest.java`
-
-Basically look for "TODO" in the code.
-
-
-Good luck!
+As for x:
+1) Add definition of insertMultiply to SimpleCalculator.java
+2) Add implementation to "SimpleCalculatorImpl.java both or * insertion to the expression
+and evaluation
+3) Update tests - check that it multiplies and that it's successfully recognized as operation
+(in my implementation it means also updating the list of supported operations)
+4) Future step - update button listener to actually perform the operations
+(adding* to the screen and returning output)
