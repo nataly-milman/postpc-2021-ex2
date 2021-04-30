@@ -6,7 +6,6 @@ import java.util.LinkedList;
 
 public class SimpleCalculatorImpl implements SimpleCalculator {
 
-    // todo: add fields as needed
     private LinkedList<String> input = new LinkedList<>();
     private final LinkedList<String> supportedOps = new LinkedList<String>() {
         {
@@ -18,16 +17,14 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
     @Override
     public String output() {
-        // todo: return output based on the current state
         if (input.isEmpty()) {
             return "0";
         }
-        return input.toString().replaceAll("\\[|]|, ", ""); //"implement me please";
+        return input.toString().replaceAll("\\[|]|, ", "");
     }
 
     @Override
     public void insertDigit(int digit) {
-        // todo: insert a digit
         if (digit < 0 || digit > 9) {
             throw new IllegalArgumentException();
         }
@@ -42,7 +39,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
     @Override
     public void insertPlus() {
-        // todo: insert a plus
         if (lastIsOperation) {
             return;
         }
@@ -55,7 +51,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
     @Override
     public void insertMinus() {
-        // todo: insert a minus
         if (lastIsOperation) {
             return;
         }
@@ -68,8 +63,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
     @Override
     public void insertEquals() {
-        // todo: calculate the equation. after calling `insertEquals()`, the output should be the result
-        //  e.g. given input "14+3", calling `insertEquals()`, and calling `output()`, output should be "17"
         int result = 0;
         String operation = "+";
         for (int i = 0; i < input.size(); i++) {
@@ -97,11 +90,6 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
 
     @Override
     public void deleteLast() {
-        // todo: delete the last input (digit, plus or minus)
-        //  e.g.
-        //  if input was "12+3" and called `deleteLast()`, then delete the "3"
-        //  if input was "12+" and called `deleteLast()`, then delete the "+"
-        //  if no input was given, then there is nothing to do here
         if (input.size() == 0) {
             return;
         }
