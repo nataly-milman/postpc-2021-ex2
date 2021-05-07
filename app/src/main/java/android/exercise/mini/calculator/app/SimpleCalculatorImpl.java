@@ -94,9 +94,11 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
         }
         String last = input.getLast();
         input.removeLast();
+        if (supportedOps.contains(last)) { lastIsOperation = false; }
         if (last.length() != 1) {
             input.add(last.substring(0, last.length() - 1));
         }
+        if (supportedOps.contains(input.getLast())) { lastIsOperation = true; }
     }
 
     @Override
