@@ -88,8 +88,9 @@ public class SimpleCalculatorImplTest {
     public void when_savingStateFromFirstCalculator_should_loadStateCorrectlyFromSecondCalculator() {
         SimpleCalculatorImpl firstCalculator = new SimpleCalculatorImpl();
         SimpleCalculatorImpl secondCalculator = new SimpleCalculatorImpl();
-        // TODO: implement the test based on this method's name.
-        //  you can get inspiration from the test method `when_savingState_should_loadThatStateCorrectly()`
+        // I forgot to remove the to-do
+        // was implemented in the last (copy_to_another_calc) function by mistake so:
+        copy_to_another_calc();
     }
 
     // 10 tests:
