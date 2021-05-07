@@ -98,7 +98,8 @@ public class SimpleCalculatorImpl implements SimpleCalculator {
         if (last.length() != 1) {
             input.add(last.substring(0, last.length() - 1));
         }
-        if (supportedOps.contains(input.getLast())) { lastIsOperation = true; }
+        if (!input.isEmpty() && supportedOps.contains(input.getLast())) { lastIsOperation = true; }
+
     }
 
     @Override
