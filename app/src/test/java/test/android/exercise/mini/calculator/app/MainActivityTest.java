@@ -71,7 +71,94 @@ public class MainActivityTest {
   }
 
   // TODO: add tests for clicks on all buttons
+  @Test
+  public void when_userClicksButtonMinus_then_activityShouldForwardCallToCalculator_and_ShowTheExpectedCalculatorOutputRightAway() {
+    // setup
+    String expectedText = "button MINUS clicked";
+    Mockito.when(mockCalculator.output()).thenReturn(expectedText);
 
+    TextView activityMainTextView = activityUnderTest.findViewById(R.id.textViewCalculatorOutput);
+    View buttonMinus = activityUnderTest.findViewById(R.id.buttonMinus);
+
+    // test
+    buttonMinus.performClick();
+
+    // verify
+    Mockito.verify(mockCalculator).insertMinus();
+    assertEquals(expectedText, activityMainTextView.getText().toString());
+  }
+
+  @Test
+  public void when_userClicksButtonEqual_then_activityShouldForwardCallToCalculator_and_ShowTheExpectedCalculatorOutputRightAway() {
+    // setup
+    String expectedText = "button EQUALS clicked";
+    Mockito.when(mockCalculator.output()).thenReturn(expectedText);
+
+    TextView activityMainTextView = activityUnderTest.findViewById(R.id.textViewCalculatorOutput);
+    View buttonEquals = activityUnderTest.findViewById(R.id.buttonEquals);
+
+    // test
+    buttonEquals.performClick();
+
+    // verify
+    Mockito.verify(mockCalculator).insertEquals();
+    assertEquals(expectedText, activityMainTextView.getText().toString());
+  }
+
+  @Test
+  public void when_userClicksBS_then_activityShouldForwardCallToCalculator_and_ShowTheExpectedCalculatorOutputRightAway() {
+    // setup
+    String expectedText = "button BACKSPACE clicked";
+    Mockito.when(mockCalculator.output()).thenReturn(expectedText);
+
+    TextView activityMainTextView = activityUnderTest.findViewById(R.id.textViewCalculatorOutput);
+    View buttonBackSpace = activityUnderTest.findViewById(R.id.buttonBackSpace);
+
+    // test
+    buttonBackSpace.performClick();
+
+    // verify
+    Mockito.verify(mockCalculator).deleteLast();
+    assertEquals(expectedText, activityMainTextView.getText().toString());
+  }
+
+  public void when_userClicksButtonClear_then_activityShouldForwardCallToCalculator_and_ShowTheExpectedCalculatorOutputRightAway() {
+    // setup
+    String expectedText = "button CLEAR clicked";
+    Mockito.when(mockCalculator.output()).thenReturn(expectedText);
+
+    TextView activityMainTextView = activityUnderTest.findViewById(R.id.textViewCalculatorOutput);
+    View buttonClear = activityUnderTest.findViewById(R.id.buttonClear);
+
+    // test
+    buttonClear.performClick();
+
+    // verify
+    Mockito.verify(mockCalculator).clear();
+    assertEquals(expectedText, activityMainTextView.getText().toString());
+  }
+
+  @Test
+  public void when_userClicksButtonDigit_then_activityShouldForwardCallToCalculator_and_ShowTheExpectedCalculatorOutputRightAway() {
+    int[] buttons = {R.id.button0, R.id.button1, R.id.button2, R.id.button3, R.id.button4,
+            R.id.button5, R.id.button6, R.id.button7, R.id.button8, R.id.button9};
+
+    for (int i =0; i<10; i++) {
+      // setup
+      String expectedText = "button "+ Integer.toString(i) + " clicked";
+      Mockito.when(mockCalculator.output()).thenReturn(expectedText);
+
+      TextView activityMainTextView = activityUnderTest.findViewById(R.id.textViewCalculatorOutput);
+      View buttonDigit = activityUnderTest.findViewById(buttons[i]);
+
+      // test
+      buttonDigit.performClick();
+
+      // verify
+      Mockito.verify(mockCalculator).insertDigit(i);
+      assertEquals(expectedText, activityMainTextView.getText().toString());
+    }
+  }
 
   @Test
   public void when_activityGetsStateSaved_then_shouldAlsoSaveCalculatorState() {
