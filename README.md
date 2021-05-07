@@ -9,3 +9,8 @@ and evaluation
 (in my implementation it means also updating the list of supported operations)
 4) Future step - update button listener to actually perform the operations
 (adding* to the screen and returning output)
+
+[ex 3 addition]
+4)* add in x view in xml and add click listener in MainActivity
+5) Test whether or not the button works in MainActivityTest
+6) Test that it returns and shows the expected output in AppFlowTest
